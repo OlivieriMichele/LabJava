@@ -25,8 +25,13 @@ public class GUI extends JFrame {
             switch (logic.hit(pos.getX(), pos.getY())) {
                 case FIRST: button.setText("1"); break;
                 case SECOND: button.setText("2"); break;
-                case THIRD: button.setText("3"); break;
-                case WRONG: button.setText("-"); break;
+                case THIRD: button.setText("3"); 
+                    for(var entry : cells.entrySet()){
+                        if(logic.isStar(entry.getValue().getX(),entry.getValue().getY())){
+                            entry.getKey().setText("*");
+                        }
+                    } break;
+                case WRONG: break;
                 default: break;
             }
         	button.setEnabled(false); 

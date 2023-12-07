@@ -6,6 +6,8 @@ public interface Logic {
 
     HitType hit(int x, int y);
 
+    boolean isStar(Integer x, Integer y);
+
     //boolean isSelected(int x, int y);
 
 }
