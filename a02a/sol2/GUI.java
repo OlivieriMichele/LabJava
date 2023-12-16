@@ -1,4 +1,4 @@
-package a01c.e2;
+package a02a.sol2;
 
 import javax.swing.*;
 import java.util.*;
@@ -8,10 +8,12 @@ import java.awt.event.ActionListener;
 public class GUI extends JFrame {
     
     private static final long serialVersionUID = -6218820567019985015L;
-    private final Map<JButton,Pair<Integer,Integer>> cells = new HashMap<>();
-    private final Logic logic = new LogicImpl();
+    private final Map<Pair<Integer,Integer>,JButton> cells = new HashMap<>();
+    private final Logics logics;
+    private int counter = 0;
     
     public GUI(int size) {
+        this.logics = new LogicsImpl(size);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(50*size, 50*size);
         
@@ -19,27 +21,18 @@ public class GUI extends JFrame {
         this.getContentPane().add(panel);
         
         ActionListener al = e -> {
-        	var button = (JButton)e.getSource();
-        	if (logic.isFirst(cells.get(button))) {
-                button.setText("*");
-            } else {
-                if (logic.isOk(cells.get(button))) {
-                    logic.setInList(cells.get(button));
-                    button.setText("*");
-                    for (var entry : cells.entrySet()) {
-                        if (logic.isInList(entry.getValue())) {
-                            entry.getKey().setText("*");
-                        }
-                    }
-                }
-            }
-        	button.setEnabled(false); 
+        	var p = logics.next();
+        	if (p.isEmpty()) {
+        		System.exit(0);
+        	}
+        	this.cells.get(p.get()).setText(String.valueOf(counter++));
         };
                 
         for (int i=0; i<size; i++){
             for (int j=0; j<size; j++){
+            	var pos = new Pair<>(j,i);
                 final JButton jb = new JButton(" ");
-                this.cells.put(jb,new Pair<>(j,i));
+                this.cells.put(pos,jb);
                 jb.addActionListener(al);
                 panel.add(jb);
             }
