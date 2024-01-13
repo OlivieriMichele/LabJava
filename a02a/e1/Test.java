@@ -51,7 +51,7 @@ public class Test {
 	
 	@org.junit.Before
 	public void initFactory() {
-		//this.factory = new DietFactoryImpl();
+		this.factory = (DietFactory) new DietFactoryImpl();
 	}
 	
 	private void fillProducts(Diet diet) {
