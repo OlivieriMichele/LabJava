@@ -1,4 +1,4 @@
-package a01b.sol2;
+package b01b.sol2;
 
 import java.util.LinkedList;
 import java.util.List;

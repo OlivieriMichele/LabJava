@@ -1,8 +1,7 @@
-package a01b.sol2;
+package b01b.sol2;
 
 import javax.swing.*;
 import java.util.*;
-import java.util.List;
 import java.awt.*;
 import java.awt.event.ActionListener;
 

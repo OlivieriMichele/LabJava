@@ -1,4 +1,4 @@
-package a01b.sol2;
+package b01b.sol2;
 
 /*
  * A standard generic Pair<X,Y>, with getters, hashCode, equals, and toString well implemented. 
