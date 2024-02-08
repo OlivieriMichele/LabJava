@@ -1,4 +1,4 @@
-package a01b.sol1;
+package b01b.sol1;
 
 import java.util.List;
 import java.util.Map;
